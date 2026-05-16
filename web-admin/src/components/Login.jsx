@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Login({ onLogin }) {
+function Login({ onLogin, onBack }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,7 +13,13 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', width: '100vw', background: 'var(--bg-body)', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ display: 'flex', height: '100vh', width: '100vw', background: 'var(--bg-body)', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+      {onBack && (
+        <button onClick={onBack} style={{ position: 'absolute', top: '32px', left: '32px', background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: '500' }}>
+          <svg viewBox="0 0 24 24" style={{ width: '18px', height: '18px', fill: 'currentColor' }}><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          Voltar para a página inicial
+        </button>
+      )}
       <div className="panel" style={{ width: '100%', maxWidth: '400px', padding: '40px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px' }}>
           <div style={{ width: '48px', height: '48px', background: 'var(--brand-blue)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
