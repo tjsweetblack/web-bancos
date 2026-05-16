@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function DetailsModal({ setView }) {
+  const [status, setStatus] = useState('PENDING'); // PENDING, APPROVED, PAID, REFUSED
+  const [showPayModal, setShowPayModal] = useState(false);
+
+  const handleApprove = () => setStatus('APPROVED');
+  const handleRefuse = () => setStatus('REFUSED');
+  const handlePay = () => {
+    setShowPayModal(false);
+    setStatus('PAID');
+  };
+
   return (
     <div className="view-content fullscreen active" id="view-details">
       <header className="topbar" style={{ borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 32px', background: 'var(--bg-body)', flexShrink: 0, height: '64px' }}>
@@ -8,12 +18,37 @@ function DetailsModal({ setView }) {
           <button onClick={() => setView('creditos')} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: '0.2s' }}>
             <svg viewBox="0 0 24 24" style={{ width: '20px', height: '20px', fill: 'currentColor' }}><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
           </button>
-          <h2 style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)' }}>Pedido #KZ-88291</h2>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <h2 style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)' }}>Pedido #KZ-88291</h2>
+            {status === 'PAID' && <span className="badge" style={{ background: 'var(--brand-blue)', color: '#fff', fontSize: '10px' }}>PAGO</span>}
+            {status === 'REFUSED' && <span className="badge" style={{ background: '#dc2626', color: '#fff', fontSize: '10px' }}>NEGADO</span>}
+          </div>
         </div>
         <div style={{ display: 'flex', gap: '12px' }}>
-          <button className="btn-secondary" style={{ color: 'var(--text-secondary)' }}>Revisão</button>
-          <button className="btn-secondary" style={{ color: 'var(--text-secondary)' }}>Negar</button>
-          <button className="btn-primary">Admitir</button>
+          {status === 'PENDING' && (
+            <>
+              <button className="btn-secondary" onClick={handleRefuse} style={{ color: 'var(--text-secondary)' }}>Negar Pedido</button>
+              <button className="btn-primary" onClick={handleApprove}>Admitir Pedido</button>
+            </>
+          )}
+          {status === 'APPROVED' && (
+            <>
+              <button className="btn-secondary" onClick={handleRefuse} style={{ color: 'var(--text-secondary)' }}>Cancelar</button>
+              <button className="btn-primary" onClick={() => setShowPayModal(true)}>Pagar Crédito - GPO</button>
+            </>
+          )}
+          {status === 'PAID' && (
+            <span style={{ fontSize: '13px', fontWeight: '600', color: 'var(--brand-blue)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <svg viewBox="0 0 24 24" style={{ width: '16px', height: '16px', fill: 'currentColor' }}><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Crédito Liquidado
+            </span>
+          )}
+          {status === 'REFUSED' && (
+            <span style={{ fontSize: '13px', fontWeight: '600', color: '#dc2626', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <svg viewBox="0 0 24 24" style={{ width: '16px', height: '16px', fill: 'currentColor' }}><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              Pedido Recusado
+            </span>
+          )}
         </div>
       </header>
 
@@ -240,6 +275,22 @@ function DetailsModal({ setView }) {
           </table>
         </div>
       </div>
+      
+      {/* Payment Confirmation Modal */}
+      {showPayModal && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
+          <div className="panel" style={{ width: '400px', padding: '32px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '16px' }}>Confirmar Pagamento GPO</h3>
+            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: '1.5' }}>
+              Você está prestes a liquidar o crédito no valor de <strong>45.2M Kz</strong> para <strong>Angola Logistics S.A.</strong> através do Angolan GPO. Esta ação é irreversível.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+              <button className="btn-secondary" onClick={() => setShowPayModal(false)}>Cancelar</button>
+              <button className="btn-primary" onClick={handlePay}>Confirmar Pagamento</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
