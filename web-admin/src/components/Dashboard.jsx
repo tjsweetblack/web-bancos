@@ -84,6 +84,35 @@ function Dashboard() {
               <div className="chart-line-h"></div>
               <div className="chart-line-h"></div>
             </div>
+
+            <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="chart-svg-anim">
+              {/* Admitidos Line */}
+              <path 
+                d="M 10 120 Q 50 100 90 110 T 170 60 T 250 80 T 330 40 T 410 50 T 490 20" 
+                fill="none" 
+                stroke="var(--brand-blue)" 
+                strokeWidth="4" 
+                strokeLinecap="round"
+              />
+              <path 
+                d="M 10 120 Q 50 100 90 110 T 170 60 T 250 80 T 330 40 T 410 50 T 490 20" 
+                fill="none" 
+                stroke="var(--brand-blue)" 
+                strokeWidth="12" 
+                strokeOpacity="0.1"
+                strokeLinecap="round"
+              />
+              {/* Negados Line */}
+              <path 
+                d="M 10 130 Q 50 120 90 130 T 170 100 T 250 110 T 330 80 T 410 90 T 490 60" 
+                fill="none" 
+                stroke="#dc2626" 
+                strokeWidth="3" 
+                strokeLinecap="round"
+                strokeDasharray="6 6"
+              />
+            </svg>
+
             <div className="chart-labels">
               <span>Jan</span>
               <span>Fev</span>

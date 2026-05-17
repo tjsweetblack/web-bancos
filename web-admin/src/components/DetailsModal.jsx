@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function DetailsModal({ setView }) {
   const [status, setStatus] = useState('PENDING'); // PENDING, APPROVED, PAID, REFUSED
   const [showPayModal, setShowPayModal] = useState(false);
+  const [viewingDoc, setViewingDoc] = useState(null);
 
   const handleApprove = () => setStatus('APPROVED');
   const handleRefuse = () => setStatus('REFUSED');
@@ -128,7 +129,7 @@ function DetailsModal({ setView }) {
               </div>
               <div className="risk-labels" style={{ marginTop: '8px' }}>
                 <span>0</span>
-                <span>400</span>
+                <span></span>
                 <span>700</span>
                 <span>1000</span>
               </div>
@@ -173,28 +174,28 @@ function DetailsModal({ setView }) {
             <div className="panel" style={{ padding: '24px' }}>
               <h3 style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '16px' }}>Documentação</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
-                <div style={{ background: 'var(--bg-body)', border: '1px solid var(--border)', borderRadius: '6px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div onClick={() => setViewingDoc('Alvará Comercial')} style={{ background: 'var(--bg-body)', border: '1px solid var(--border)', borderRadius: '6px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', transition: 'background 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'} onMouseLeave={(e) => e.currentTarget.style.background = 'var(--bg-body)'}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '500' }}>
                     <svg viewBox="0 0 24 24" style={{ width: '16px', height: '16px', fill: 'currentColor' }}><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
                     Alvará Comercial
                   </div>
                   <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80' }}></div>
                 </div>
-                <div style={{ background: 'var(--bg-body)', border: '1px solid var(--border)', borderRadius: '6px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div onClick={() => setViewingDoc('Extrato Bancário (6M)')} style={{ background: 'var(--bg-body)', border: '1px solid var(--border)', borderRadius: '6px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', transition: 'background 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'} onMouseLeave={(e) => e.currentTarget.style.background = 'var(--bg-body)'}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '500' }}>
                     <svg viewBox="0 0 24 24" style={{ width: '16px', height: '16px', fill: 'currentColor' }}><path d="M4 10h3v7H4zM10.5 10h3v7h-3zM2 19h20v3H2zM17 10h3v7h-3zM12 1L2 6v2h20V6L12 1z"/></svg>
                     Extrato Bancário (6M)
                   </div>
                   <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80' }}></div>
                 </div>
-                <div style={{ background: 'var(--bg-body)', border: '1px solid var(--border)', borderRadius: '6px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div onClick={() => setViewingDoc('Certidão Fiscal')} style={{ background: 'var(--bg-body)', border: '1px solid var(--border)', borderRadius: '6px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', transition: 'background 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'} onMouseLeave={(e) => e.currentTarget.style.background = 'var(--bg-body)'}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '500' }}>
                     <svg viewBox="0 0 24 24" style={{ width: '16px', height: '16px', fill: 'currentColor' }}><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
                     Certidão Fiscal
                   </div>
                   <span className="badge" style={{ background: 'var(--brand-blue)', color: '#fff', fontSize: '9px', padding: '2px 6px' }}>PENDENTE</span>
                 </div>
-                <div style={{ background: 'var(--bg-body)', border: '1px solid var(--border)', borderRadius: '6px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div onClick={() => setViewingDoc('Relatório Auditoria')} style={{ background: 'var(--bg-body)', border: '1px solid var(--border)', borderRadius: '6px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', transition: 'background 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'} onMouseLeave={(e) => e.currentTarget.style.background = 'var(--bg-body)'}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '500' }}>
                     <svg viewBox="0 0 24 24" style={{ width: '16px', height: '16px', fill: 'currentColor' }}><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
                     Relatório Auditoria
@@ -243,7 +244,6 @@ function DetailsModal({ setView }) {
             <thead>
               <tr>
                 <th>Data</th>
-                <th>Entidade</th>
                 <th>Natureza</th>
                 <th>Valor (Kz)</th>
                 <th style={{ textAlign: 'right' }}>Status</th>
@@ -252,21 +252,18 @@ function DetailsModal({ setView }) {
             <tbody>
               <tr style={{ pointerEvents: 'none' }}>
                 <td style={{ color: 'var(--text-secondary)' }}>12/10/2023</td>
-                <td style={{ color: 'var(--text-primary)', fontWeight: '500' }}>Sonangol Distr.</td>
                 <td style={{ color: 'var(--text-secondary)' }}>Pagamento Fornecedor</td>
                 <td style={{ color: 'var(--text-primary)', fontWeight: '500' }}>1,240,000</td>
                 <td style={{ textAlign: 'right' }}><span className="badge" style={{ background: 'rgba(74, 222, 128, 0.1)', color: '#4ade80', borderColor: 'rgba(74, 222, 128, 0.2)' }}>Concluído</span></td>
               </tr>
               <tr style={{ pointerEvents: 'none' }}>
                 <td style={{ color: 'var(--text-secondary)' }}>11/10/2023</td>
-                <td style={{ color: 'var(--text-primary)', fontWeight: '500' }}>Unitel Empresas</td>
                 <td style={{ color: 'var(--text-secondary)' }}>Serviços Mensais</td>
                 <td style={{ color: 'var(--text-primary)', fontWeight: '500' }}>85,400</td>
                 <td style={{ textAlign: 'right' }}><span className="badge" style={{ background: 'rgba(74, 222, 128, 0.1)', color: '#4ade80', borderColor: 'rgba(74, 222, 128, 0.2)' }}>Concluído</span></td>
               </tr>
               <tr style={{ pointerEvents: 'none' }}>
                 <td style={{ color: 'var(--text-secondary)' }}>09/10/2023</td>
-                <td style={{ color: 'var(--text-primary)', fontWeight: '500' }}>Talatona Mall</td>
                 <td style={{ color: 'var(--text-secondary)' }}>Renda Escritório</td>
                 <td style={{ color: 'var(--text-primary)', fontWeight: '500' }}>450,000</td>
                 <td style={{ textAlign: 'right' }}><span className="badge" style={{ background: 'rgba(250, 204, 21, 0.1)', color: '#facc15', borderColor: 'rgba(250, 204, 21, 0.2)' }}>Processando</span></td>
@@ -280,13 +277,34 @@ function DetailsModal({ setView }) {
       {showPayModal && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
           <div className="panel" style={{ width: '400px', padding: '32px' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '16px' }}>Confirmar Pagamento GPO</h3>
+            <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '16px' }}>Confirmar Pagamento</h3>
             <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: '1.5' }}>
-              Você está prestes a liquidar o crédito no valor de <strong>45.2M Kz</strong> para <strong>Angola Logistics S.A.</strong> através do Angolan GPO. Esta ação é irreversível.
+              Você está prestes a liquidar o crédito no valor de <strong>45.2M Kz</strong> para <strong>Angola Logistics S.A.</strong> através do Angolan. Esta ação é irreversível.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
               <button className="btn-secondary" onClick={() => setShowPayModal(false)}>Cancelar</button>
               <button className="btn-primary" onClick={handlePay}>Confirmar Pagamento</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Document Viewer Modal */}
+      {viewingDoc && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '40px' }} onClick={() => setViewingDoc(null)}>
+          <div style={{ background: 'var(--bg-surface)', width: '100%', maxWidth: '800px', height: '100%', maxHeight: '90vh', borderRadius: '12px', display: 'flex', flexDirection: 'column', overflow: 'hidden', boxShadow: '0 24px 48px rgba(0,0,0,0.2)' }} onClick={e => e.stopPropagation()}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', borderBottom: '1px solid var(--border)', background: 'var(--bg-body)' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>Visualização: {viewingDoc}</h3>
+              <button onClick={() => setViewingDoc(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)' }}>
+                <svg viewBox="0 0 24 24" style={{ width: '24px', height: '24px', fill: 'currentColor' }}><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            </div>
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#e5e7eb', position: 'relative' }}>
+              <div style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
+                <svg viewBox="0 0 24 24" style={{ width: '64px', height: '64px', fill: 'currentColor', margin: '0 auto 16px auto', opacity: 0.5 }}><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <p style={{ fontSize: '14px', fontWeight: '500' }}>A carregar a pré-visualização do documento...</p>
+                <p style={{ fontSize: '12px', marginTop: '8px', opacity: 0.7 }}>Este é um ambiente de demonstração.</p>
+              </div>
             </div>
           </div>
         </div>

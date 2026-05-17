@@ -62,7 +62,7 @@ function LandingPage({ onNavigate }) {
             </div>
           </div>
           <div style={{ flex: '1 1 400px', position: 'relative', display: 'flex', justifyContent: 'center' }}>
-            <img src="/hero-final.png" alt="Profissional a trabalhar" style={{ width: '100%', maxWidth: '500px', borderRadius: '24px', boxShadow: '0 24px 48px rgba(0,0,0,0.2)', objectFit: 'cover' }} />
+            <img src="/hero-final.png" alt="Profissional a trabalhar" style={{ width: '100%', maxWidth: '900px', borderRadius: '24px', boxShadow: '0 24px 48px rgba(0,0,0,0.2)', objectFit: 'cover' }} />
           </div>
         </div>
       </section>
@@ -179,7 +179,7 @@ function LandingPage({ onNavigate }) {
                 <span style={{ fontSize: '24px', color: 'var(--brand-blue)', display: 'flex' }}><IconReceipt /></span> PoS com emissão de faturas
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '18px', color: 'var(--text-primary)', fontWeight: '600' }}>
-                <span style={{ fontSize: '24px', color: 'var(--brand-blue)', display: 'flex' }}><IconCard /></span> Pagamentos via referência (GPO)
+                <span style={{ fontSize: '24px', color: 'var(--brand-blue)', display: 'flex' }}><IconCard /></span> Pagamentos via referência
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '18px', color: 'var(--text-primary)', fontWeight: '600' }}>
                 <span style={{ fontSize: '24px', color: 'var(--brand-blue)', display: 'flex' }}><IconBarChart /></span> Relatórios e histórico financeiro
@@ -307,7 +307,7 @@ function LandingPage({ onNavigate }) {
             Transformamos esforço em dados.<br/>
             E dados em oportunidades.
           </p>
-          <div style={{ display: 'inline-block', backgroundColor: 'rgba(7, 212, 3, 0.2)', padding: '16px 32px', borderRadius: '100px', border: '1px solid var(--brand-blue)' }}>
+          <div style={{ display: 'inline-block', backgroundColor: 'rgba(22, 163, 74, 0.2)', padding: '16px 32px', borderRadius: '100px', border: '1px solid var(--brand-blue)' }}>
             <span style={{ fontSize: '20px', fontWeight: '700', color: '#4ade80' }}>Onde hoje há invisibilidade, amanhã haverá crescimento.</span>
           </div>
         </div>
@@ -326,7 +326,7 @@ function LandingPage({ onNavigate }) {
           <p style={{ fontSize: '20px', color: 'var(--text-secondary)', marginBottom: '40px' }}>
             Começa hoje, gratuitamente, e dá o próximo passo.
           </p>
-          <button onClick={() => onNavigate('login')} style={{ backgroundColor: 'var(--brand-blue)', color: '#fff', border: 'none', padding: '20px 48px', borderRadius: '16px', fontWeight: '800', fontSize: '20px', cursor: 'pointer', boxShadow: '0 12px 24px rgba(7, 212, 3, 0.3)', marginBottom: '32px', transition: 'transform 0.2s', display: 'inline-flex', alignItems: 'center', gap: '8px' }} onMouseEnter={(e) => e.target.style.transform='scale(1.05)'} onMouseLeave={(e) => e.target.style.transform='scale(1)'}>
+          <button onClick={() => onNavigate('login')} style={{ backgroundColor: 'var(--brand-blue)', color: '#fff', border: 'none', padding: '20px 48px', borderRadius: '16px', fontWeight: '800', fontSize: '20px', cursor: 'pointer', boxShadow: '0 12px 24px rgba(22, 163, 74, 0.3)', marginBottom: '32px', transition: 'transform 0.2s', display: 'inline-flex', alignItems: 'center', gap: '8px' }} onMouseEnter={(e) => e.target.style.transform='scale(1.05)'} onMouseLeave={(e) => e.target.style.transform='scale(1)'}>
             <IconPointer /> Criar conta agora
           </button>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', flexWrap: 'wrap' }}>
