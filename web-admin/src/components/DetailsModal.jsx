@@ -1,5 +1,239 @@
 import React, { useState } from 'react';
 
+const renderDocumentMock = (docType) => {
+  switch(docType) {
+    case 'Alvará Comercial':
+      return (
+        <div style={{ padding: '40px', background: 'white', width: '100%', height: '100%', overflowY: 'auto', color: '#1f2937', boxSizing: 'border-box' }}>
+          <div style={{ borderBottom: '2px solid #1f2937', paddingBottom: '20px', marginBottom: '30px', textAlign: 'center' }}>
+            <h1 style={{ fontSize: '24px', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '8px' }}>República de Angola</h1>
+            <h2 style={{ fontSize: '18px', fontWeight: '600' }}>Ministério do Comércio</h2>
+            <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginTop: '20px' }}>ALVARÁ COMERCIAL</h3>
+          </div>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: '16px', marginBottom: '30px', fontSize: '14px' }}>
+            <strong style={{ textAlign: 'right' }}>Nº do Alvará:</strong> <span>123456/LUANDA/2023</span>
+            <strong style={{ textAlign: 'right' }}>NIF:</strong> <span>5000123456</span>
+            <strong style={{ textAlign: 'right' }}>Firma:</strong> <span>ANGOLA LOGISTICS S.A.</span>
+            <strong style={{ textAlign: 'right' }}>Sede:</strong> <span>Luanda, Rua dos Mercadores, nº 45, Município de Luanda</span>
+            <strong style={{ textAlign: 'right' }}>Capital Social:</strong> <span>Kz 10.000.000,00</span>
+          </div>
+
+          <div style={{ marginBottom: '40px' }}>
+            <h4 style={{ fontSize: '16px', fontWeight: 'bold', borderBottom: '1px solid #e5e7eb', paddingBottom: '8px', marginBottom: '16px' }}>Ramos de Actividade</h4>
+            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', fontSize: '14px', lineHeight: '1.6' }}>
+              <li>Transporte rodoviário de mercadorias</li>
+              <li>Logística e distribuição</li>
+              <li>Armazenagem</li>
+            </ul>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '60px' }}>
+            <div style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: '12px', marginBottom: '40px' }}>O Director Provincial</p>
+              <div style={{ borderTop: '1px solid #1f2937', width: '200px', paddingTop: '8px' }}>Assinatura Autorizada</div>
+            </div>
+            <div style={{ fontSize: '12px' }}>
+              <p>Emitido em: <strong>Luanda, 15 de Março de 2023</strong></p>
+              <p>Válido até: <strong>14 de Março de 2028</strong></p>
+            </div>
+          </div>
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%) rotate(-45deg)', fontSize: '120px', color: 'rgba(0,0,0,0.03)', pointerEvents: 'none', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+            CÓPIA AUTENTICADA
+          </div>
+        </div>
+      );
+    case 'Extrato Bancário (6M)':
+      return (
+        <div style={{ padding: '40px', background: 'white', width: '100%', height: '100%', overflowY: 'auto', color: '#1f2937', boxSizing: 'border-box' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #e5e7eb', paddingBottom: '20px', marginBottom: '30px' }}>
+             <div>
+               <h1 style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--brand-blue)' }}>BANCO DE INVESTIMENTO</h1>
+               <p style={{ fontSize: '12px', color: '#6b7280' }}>Sua parceira financeira de confiança</p>
+             </div>
+             <div style={{ textAlign: 'right' }}>
+               <h2 style={{ fontSize: '18px', fontWeight: 'bold' }}>EXTRATO DE CONTA</h2>
+               <p style={{ fontSize: '14px' }}>Período: <strong>01/04/2023 a 30/09/2023</strong></p>
+             </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px', padding: '20px', background: '#f9fafb', borderRadius: '8px' }}>
+            <div>
+              <p style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>Titular</p>
+              <p style={{ fontSize: '16px', fontWeight: 'bold' }}>ANGOLA LOGISTICS S.A.</p>
+              <p style={{ fontSize: '14px' }}>NIF: 5000123456</p>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <p style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>Conta Corrente (Kz)</p>
+              <p style={{ fontSize: '16px', fontWeight: 'bold' }}>Nº 0012.3456.7890.1</p>
+              <p style={{ fontSize: '14px' }}>IBAN: AO06.0000.0000.1234.5678.9</p>
+            </div>
+          </div>
+
+          <table style={{ width: '100%', fontSize: '12px', textAlign: 'left', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ background: '#f3f4f6', borderBottom: '2px solid #e5e7eb' }}>
+                <th style={{ padding: '12px', fontWeight: '600' }}>Data</th>
+                <th style={{ padding: '12px', fontWeight: '600' }}>Descrição</th>
+                <th style={{ padding: '12px', fontWeight: '600', textAlign: 'right' }}>Débito</th>
+                <th style={{ padding: '12px', fontWeight: '600', textAlign: 'right' }}>Crédito</th>
+                <th style={{ padding: '12px', fontWeight: '600', textAlign: 'right' }}>Saldo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style={{ borderBottom: '1px solid #e5e7eb' }}>
+                <td style={{ padding: '12px' }}>01/09/2023</td>
+                <td style={{ padding: '12px' }}>SALDO ANTERIOR</td>
+                <td style={{ padding: '12px', textAlign: 'right' }}></td>
+                <td style={{ padding: '12px', textAlign: 'right' }}></td>
+                <td style={{ padding: '12px', textAlign: 'right', fontWeight: 'bold' }}>15.420.000,00</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid #e5e7eb' }}>
+                <td style={{ padding: '12px' }}>05/09/2023</td>
+                <td style={{ padding: '12px' }}>PAGAMENTO SERVIÇOS TRIBUTÁRIOS - AGT</td>
+                <td style={{ padding: '12px', textAlign: 'right', color: '#dc2626' }}>-1.250.000,00</td>
+                <td style={{ padding: '12px', textAlign: 'right' }}></td>
+                <td style={{ padding: '12px', textAlign: 'right' }}>14.170.000,00</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid #e5e7eb' }}>
+                <td style={{ padding: '12px' }}>12/09/2023</td>
+                <td style={{ padding: '12px' }}>TRANSFERÊNCIA RECEBIDA - CLIENTE X</td>
+                <td style={{ padding: '12px', textAlign: 'right' }}></td>
+                <td style={{ padding: '12px', textAlign: 'right', color: '#16a34a' }}>+5.800.000,00</td>
+                <td style={{ padding: '12px', textAlign: 'right' }}>19.970.000,00</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid #e5e7eb' }}>
+                <td style={{ padding: '12px' }}>25/09/2023</td>
+                <td style={{ padding: '12px' }}>PROCESSAMENTO DE SALÁRIOS</td>
+                <td style={{ padding: '12px', textAlign: 'right', color: '#dc2626' }}>-4.200.000,00</td>
+                <td style={{ padding: '12px', textAlign: 'right' }}></td>
+                <td style={{ padding: '12px', textAlign: 'right' }}>15.770.000,00</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
+                <td style={{ padding: '12px', fontWeight: 'bold' }}>30/09/2023</td>
+                <td style={{ padding: '12px', fontWeight: 'bold' }}>SALDO FINAL</td>
+                <td style={{ padding: '12px', textAlign: 'right' }}></td>
+                <td style={{ padding: '12px', textAlign: 'right' }}></td>
+                <td style={{ padding: '12px', textAlign: 'right', fontWeight: 'bold' }}>15.770.000,00</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div style={{ marginTop: '40px', fontSize: '11px', color: '#9ca3af', textAlign: 'center' }}>
+            <p>Este documento foi gerado eletronicamente e não requer assinatura.</p>
+            <p>Página 6 de 6</p>
+          </div>
+        </div>
+      );
+    case 'Relatório Auditoria':
+      return (
+        <div style={{ padding: '40px', background: 'white', width: '100%', height: '100%', overflowY: 'auto', color: '#1f2937', boxSizing: 'border-box' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: '#111827' }}>KPMG</h1>
+            <p style={{ fontSize: '14px', color: '#4b5563' }}>Auditores Independentes</p>
+          </div>
+          
+          <div style={{ marginBottom: '30px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 'bold', borderBottom: '2px solid #111827', paddingBottom: '10px', marginBottom: '20px' }}>RELATÓRIO DOS AUDITORES INDEPENDENTES SOBRE AS DEMONSTRAÇÕES FINANCEIRAS</h2>
+            <p style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '10px' }}>Aos Accionistas da</p>
+            <p style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '20px' }}>ANGOLA LOGISTICS S.A.</p>
+          </div>
+
+          <div style={{ fontSize: '14px', lineHeight: '1.8', color: '#374151' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>Opinião</h3>
+            <p style={{ marginBottom: '20px' }}>
+              Auditámos as demonstrações financeiras da Angola Logistics S.A. (a Empresa), que compreendem o balanço em 31 de Dezembro de 2022, a demonstração de resultados, a demonstração das alterações no capital próprio e a demonstração dos fluxos de caixa para o ano findo naquela data, bem como as notas às demonstrações financeiras, incluindo um resumo das políticas contabilísticas significativas.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              Em nossa opinião, as demonstrações financeiras anexas apresentam de forma verdadeira e apropriada, em todos os aspectos materiais, a posição financeira da Empresa em 31 de Dezembro de 2022, e o seu desempenho financeiro e fluxos de caixa para o ano findo naquela data, de acordo com o Plano Geral de Contabilidade (PGC) de Angola.
+            </p>
+
+            <h3 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>Bases para a Opinião</h3>
+            <p style={{ marginBottom: '20px' }}>
+              A nossa auditoria foi efectuada de acordo com as Normas Internacionais de Auditoria (ISA). As nossas responsabilidades nos termos dessas normas estão descritas na secção "Responsabilidades do Auditor pela Auditoria das Demonstrações Financeiras" do nosso relatório. Somos independentes da Empresa, em conformidade com o Código de Ética para Profissionais de Contabilidade (Código IESBA), e cumprimos as nossas outras responsabilidades éticas de acordo com esses requisitos. Acreditamos que a prova de auditoria que obtivemos é suficiente e apropriada para proporcionar uma base para a nossa opinião.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '60px', paddingTop: '30px', borderTop: '1px solid #e5e7eb' }}>
+             <div>
+               <p style={{ fontWeight: 'bold', marginBottom: '40px' }}>KPMG Angola - Auditores e Consultores, S.A.</p>
+               <div style={{ borderTop: '1px solid #111827', width: '250px', paddingTop: '10px' }}>
+                 <p style={{ fontSize: '14px', fontWeight: '600' }}>Sócio Responsável</p>
+                 <p style={{ fontSize: '12px', color: '#6b7280' }}>Inscrição OCPCA nº 20180123</p>
+               </div>
+             </div>
+             <div style={{ textAlign: 'right', fontSize: '14px' }}>
+               <p>Luanda, 28 de Abril de 2023</p>
+             </div>
+          </div>
+        </div>
+      );
+    case 'Certidão Fiscal':
+      return (
+        <div style={{ padding: '40px', background: 'white', width: '100%', height: '100%', overflowY: 'auto', color: '#1f2937', position: 'relative', boxSizing: 'border-box' }}>
+           <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Emblem_of_Angola.svg/150px-Emblem_of_Angola.svg.png" alt="República de Angola" style={{ width: '80px', marginBottom: '15px', filter: 'grayscale(100%) opacity(0.8)' }} />
+             <h1 style={{ fontSize: '20px', fontWeight: 'bold', textTransform: 'uppercase' }}>República de Angola</h1>
+             <h2 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px' }}>Ministério das Finanças</h2>
+             <h3 style={{ fontSize: '18px', fontWeight: 'bold', textTransform: 'uppercase', color: '#111827', background: '#f3f4f6', display: 'inline-block', padding: '8px 16px', borderRadius: '4px' }}>Administração Geral Tributária (AGT)</h3>
+           </div>
+
+           <div style={{ textAlign: 'center', margin: '40px 0' }}>
+             <h2 style={{ fontSize: '24px', fontWeight: 'bold', textDecoration: 'underline' }}>CERTIDÃO DE REGULARIDADE FISCAL</h2>
+             <p style={{ marginTop: '10px', fontSize: '14px', color: '#dc2626', fontWeight: 'bold' }}>SITUAÇÃO IRREGULAR / PENDENTE</p>
+           </div>
+
+           <div style={{ fontSize: '14px', lineHeight: '1.8', textAlign: 'justify', marginBottom: '40px' }}>
+             <p>
+               O Chefe da Repartição Fiscal, nos termos da legislação tributária em vigor, CERTIFICA que, consultados os registos da Administração Geral Tributária (AGT), verificou-se a existência de <strong>PENDÊNCIAS</strong> em nome do contribuinte abaixo identificado:
+             </p>
+           </div>
+
+           <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '20px', marginBottom: '40px' }}>
+             <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '12px', fontSize: '14px' }}>
+               <strong style={{ color: '#991b1b' }}>NIF:</strong> <span>5000123456</span>
+               <strong style={{ color: '#991b1b' }}>Contribuinte:</strong> <span>ANGOLA LOGISTICS S.A.</span>
+               <strong style={{ color: '#991b1b' }}>Domicílio Fiscal:</strong> <span>Luanda, Rua dos Mercadores, nº 45, Município de Luanda</span>
+             </div>
+           </div>
+           
+           <div style={{ marginBottom: '40px' }}>
+              <h4 style={{ fontSize: '16px', fontWeight: 'bold', color: '#991b1b', marginBottom: '10px' }}>Descrição das Pendências:</h4>
+              <ul style={{ listStyleType: 'square', paddingLeft: '20px', fontSize: '14px', color: '#dc2626' }}>
+                <li>Falta de liquidação do Imposto Industrial - Exercício de 2022.</li>
+                <li>Divergências na Declaração de IVA (Mês: Dezembro/2022).</li>
+              </ul>
+           </div>
+
+           <div style={{ fontSize: '14px', lineHeight: '1.8', textAlign: 'justify', marginBottom: '60px' }}>
+             <p>
+               A presente certidão é emitida exclusivamente para efeitos informativos e não constitui quitação de quaisquer dívidas que venham a ser apuradas. O contribuinte deve regularizar a sua situação junto da Repartição Fiscal competente no prazo estipulado por lei.
+             </p>
+           </div>
+
+           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+             <div style={{ fontSize: '12px' }}>
+               <p>Documento processado por computador.</p>
+               <p>Código de Validação: <strong>AGT-2023-PEND-88291</strong></p>
+             </div>
+             <div style={{ textAlign: 'center' }}>
+               <div style={{ width: '100px', height: '100px', border: '3px solid #dc2626', borderRadius: '50%', margin: '0 auto 20px auto', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#dc2626', fontWeight: 'bold', transform: 'rotate(-15deg)', fontSize: '16px' }}>
+                 INVÁLIDO
+               </div>
+               <div style={{ borderTop: '1px solid #1f2937', width: '250px', paddingTop: '8px' }}>O Chefe da Repartição Fiscal</div>
+             </div>
+           </div>
+        </div>
+      );
+    default:
+      return (
+        <div style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
+          <svg viewBox="0 0 24 24" style={{ width: '64px', height: '64px', fill: 'currentColor', margin: '0 auto 16px auto', opacity: 0.5 }}><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          <p style={{ fontSize: '14px', fontWeight: '500' }}>Documento não encontrado</p>
+        </div>
+      );
+  }
+};
 function DetailsModal({ setView }) {
   const [status, setStatus] = useState('PENDING'); // PENDING, APPROVED, PAID, REFUSED
   const [showPayModal, setShowPayModal] = useState(false);
@@ -300,11 +534,7 @@ function DetailsModal({ setView }) {
               </button>
             </div>
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#e5e7eb', position: 'relative' }}>
-              <div style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
-                <svg viewBox="0 0 24 24" style={{ width: '64px', height: '64px', fill: 'currentColor', margin: '0 auto 16px auto', opacity: 0.5 }}><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                <p style={{ fontSize: '14px', fontWeight: '500' }}>A carregar a pré-visualização do documento...</p>
-                <p style={{ fontSize: '12px', marginTop: '8px', opacity: 0.7 }}>Este é um ambiente de demonstração.</p>
-              </div>
+              {renderDocumentMock(viewingDoc)}
             </div>
           </div>
         </div>

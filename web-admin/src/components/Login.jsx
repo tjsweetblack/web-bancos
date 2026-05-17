@@ -6,9 +6,12 @@ function Login({ onLogin, onBack }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // For now, accept any credentials
     if (email && password) {
-      onLogin();
+      if (email === 'admin@kandonga.com' && password === 'admin') {
+        onLogin('ADMIN');
+      } else {
+        onLogin('ANALYST');
+      }
     }
   };
 
